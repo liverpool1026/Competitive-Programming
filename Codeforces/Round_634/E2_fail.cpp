@@ -45,7 +45,7 @@ void populate() {
 	int n;
 	std::cin >> n;
 	std::vector<int> vec(n);
-	std::vector<int> count[200];
+	std::map<int, std::vector<int>> count;
 
 	for (int i = 0; i < n; i++) {
 		std::cin >> vec[i];
@@ -53,8 +53,8 @@ void populate() {
 		count[vec[i]].emplace_back(i);
 	}
 
-	for (int i = 0; i < 200; i++) {
-		count[i].emplace_back(n);
+	for (auto &x : count) {
+		x.second.emplace_back(n);
 	}
 
 
@@ -64,7 +64,7 @@ void populate() {
 		for (int j = 0; j < 200; j++) {
 			if (i == j) {
 				max = std::max((int)count[i].size() - 1, max);
-			} else if (!(count[i].size() - 1) || !(count[j].size() - 1)) {
+			} else if (count[i].size() <= 1 || count[j].size() <= 1) {
 				continue;
 			} else {
 				std::vector<int> newVec;
@@ -99,4 +99,3 @@ int main() {
 
 
 }
-
