@@ -25,7 +25,7 @@ int sumOfgcd(int n) {
 					count += 3 * gcd(n, j, i);
 				}
 			}
-			count += 3 * gcd(n, n, i);
+			count += 3 * gcd(n, n, i); // n
 		}
 		return sumOfgcd(n-1) + count + n;
 	}
